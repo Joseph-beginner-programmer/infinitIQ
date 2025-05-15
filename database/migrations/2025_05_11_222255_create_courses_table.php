@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
 
             // Foreign Keys
-            $table->foreignId('instructor_id')->constrained('users')->onDelete('cascade'); // assuming instructors are users
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('instructor_id')->constrained('instructors', 'id')->onDelete('cascade'); // assuming instructors are users
+            $table->foreignId('category_id')->constrained('categories', 'id')->onDelete('cascade');
 
             // Course Length
             $table->integer('length_value'); // e.g., 1, 2, 3

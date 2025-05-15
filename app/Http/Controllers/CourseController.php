@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        return view('pages.courses');
+        $courses = Course::with(['instructor', 'category', 'parts'])->get();
+        return view('pages.courses', compact('courses'));
     }
 
     /**

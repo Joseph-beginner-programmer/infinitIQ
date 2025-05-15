@@ -10,7 +10,7 @@ class Course extends Model
 
     public function parts()
     {
-        return $this->hasMany(Course_Part::class);
+        return $this->hasMany(CoursePart::class);
     }
 
     public function instructor()

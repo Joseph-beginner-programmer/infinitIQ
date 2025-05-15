@@ -13,11 +13,12 @@
         <p>Welcome to our online course page, where you can enhance your skills in design and development. Choose from our carefully curated selection of 10 courses designed to provide you with comprehensive knowledge and practical experience. Explore the courses below and find the perfect fit for your learning journey.</p>
     </div>
 
+    @foreach ($courses as $course)
     <!-- course card container -->
     <div class="course-card-container mt-5 rounded-lg shadow-xl bg-white">
         <!-- course header -->
         <div class="course-card w-full h-[15rem]  py-3 px-5 ">
-            <h2 class="font-roboto font-bold text-[1.3rem] text-black">Web Design Fundamental</h2>
+            <h2 class="font-roboto font-bold text-[1.3rem] text-black">{{$course->title}}</h2>
             <h3 class="font-roboto font-bold text-[1.1rem]">4.8 Rating</h3>
             <p class="text-[1rem]">
                 Learn the fundamentals of web design, including HTML, CSS, and responsive design principles. Develop the skills to create visually appealing and user-friendly websites.
@@ -56,16 +57,16 @@
             <!-- course length and level -->
             <div class="flex gap-3 mt-8">
                 <div class="border-2 border-grey-400 rounded-lg py-1 px-5 flex justify-center">
-                    <p class="font-roboto text-black text-[1.05rem]">4 weeks</p>
+                    <p class="font-roboto text-black text-[1.05rem]">{{$course->length_value . ' ' . $course->length_unit}}</p>
                 </div>
                 <div class="border-2 border-grey-400 rounded-lg py-1 px-5 flex justify-center">
-                    <p class="font-roboto text-[1.05rem text-black">Beginner</p>
+                    <p class="font-roboto text-[1.05rem text-black">{{ $course->level }}</p>
                 </div>
             </div>
             <!-- instructor text -->
             <div class="mt-3">
                 <p class="font-roboto text-[1.2rem] text-black font-bold">
-                    By John Smith
+                    By {{ $course->instructor->instructor_name }}
                 </p>
             </div>
         </div>
@@ -76,22 +77,25 @@
                 <h2 class="my-4 text-black mx-5 font-bold font-roboto text-[1.1rem]">Curriculum</h2>
                 <hr class="h-[0.1rem] bg-gray-200 mb-5">
 
-                <h1 class="mx-5 mt-5  font-bold font-roboto text-black text-[2.5rem] text-bold">01</h1>
-                <p class="mx-5 font-roboto text-[1.1rem] text-black font-medium">Introduction to HTML</p>
+                @foreach ($course->parts as $part)
+                <h1 class="mx-5 mt-5  font-bold font-roboto text-black text-[2.5rem] text-bold">{{ '0'.$part->order  }}</h1>
+                <p class="mx-5 font-roboto text-[1.1rem] text-black font-medium">{{ $part->title }}</p>
 
                 <hr class="h-[0.1rem] bg-gray-200 mb-5 mx-5">
+                @endforeach
 
-                <h1 class="mx-5 font-bold font-roboto text-black text-[2.5rem] text-bold">02</h1>
-                <p class="mx-5 font-roboto text-[1.1rem] text-black font-medium">Add styling with CSS</p>
 
-                <hr class="h-[0.1rem] bg-gray-200 mb-5 mx-5">
+
+
             </div>
 
-            
+
         </div>
 
 
     </div>
+    @endforeach
+
 
 </div>
 @endsection
