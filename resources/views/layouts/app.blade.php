@@ -51,6 +51,18 @@
         .font-roboto {
             font-family: 'Roboto', sans-serif;
         }
+
+        .bg-primary-purple {
+            background-color: #8A60A2;
+        }
+
+        .border-primary-purple {
+            border-color: #8A60A2;
+        }
+
+        .body {
+            margin: 0;
+        }
     </style>
 
     <script>
@@ -64,9 +76,9 @@
 
 </head>
 
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden min-h-[70rem] bg-zinc-100">
 
-    <div class="w-full max-w-screen-lg mx-auto px-4">
+    <div class="bg-zinc-100 w-full max-w-screen-sm mx-auto px-4 overflow-wrap break-word h-screen">
         @yield('content')
     </div>
 
