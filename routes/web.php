@@ -40,4 +40,5 @@ Route::get('/pricing' , [PricingController::class , 'index'])->name('pricing');
 
 #Contact
 Route::get('/contact' , [ContactController::class , 'index'])->name('contact'); 
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 

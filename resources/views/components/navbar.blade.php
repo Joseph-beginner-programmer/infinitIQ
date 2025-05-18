@@ -2,7 +2,7 @@
     <!-- Left: Logo + Nav Links -->
     <div class="flex items-center space-x-8">
         <!-- Logo -->
-        <img src="{{ asset('images/InfiniteIQ.png') }}" alt="Logo" class="w-10 h-10">
+        <img src="{{ asset('images/InfiniteIQ.png') }}" alt="Logo" class="w-10 h-10" loading="lazy">
 
         <!-- Navigation Links -->
         <div class="hidden md:flex space-x-4">

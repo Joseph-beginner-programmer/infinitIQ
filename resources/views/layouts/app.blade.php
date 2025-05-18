@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
   <script src="https://cdn.tailwindcss.com"></script> <!-- ✅ Tailwind CDN resmi -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
 
     <!-- Font Awesome CDN -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
