@@ -29,7 +29,7 @@
             <!-- Button Container -->
             <div class=" mt-5 flex gap-5 justify-end items-start">
                 <!-- view course button -->
-                <a href="_#" class="font-roboto border-2 border-grey-400 flex-none
+                <a href="{{ route('courses.show', $course->id) }}" class="font-roboto border-2 border-grey-400 flex-none
                     text-black text-[1.1rem] font-bold px-6 py-3 rounded-lg">
                     View Course
                 </a>
@@ -38,7 +38,6 @@
                     text-white text-[1.1rem] font-bold px-8 py-3 rounded-lg border-primary-purple border-2">
                     Enroll Now
                 </a>
-
             </div>
         </div>
         <!-- course image -->

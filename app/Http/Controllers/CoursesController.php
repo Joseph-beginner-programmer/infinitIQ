@@ -34,7 +34,8 @@ class CoursesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $course = Course::with(['parts', 'instructor'])->findOrFail($id);
+            return view('CoursesDetail', compact('course'));
     }
 
     /**
