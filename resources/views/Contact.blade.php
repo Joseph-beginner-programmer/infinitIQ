@@ -46,33 +46,33 @@
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label for="firstName" class="block mb-2 font-medium">First Name</label>
-            <input type="text" name="first_name" id="firstName" placeholder="Enter First Name" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300">
+            <input type="text" name="first_name" id="firstName" placeholder="Enter First Name" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300" required>
           </div>
           <div>
             <label for="lastName" class="block mb-2 font-medium">Last Name</label>
-            <input type="text" name="last_name" id="lastName" placeholder="Enter Last Name" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300">
+            <input type="text" name="last_name" id="lastName" placeholder="Enter Last Name" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300" required>
           </div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label for="email" class="block mb-2 font-medium">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter your Email" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300">
+            <input type="email" name="email" id="email" placeholder="Enter your Email" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300" required>
           </div>
           <div>
             <label for="phone" class="block mb-2 font-medium">Phone</label>
-            <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300">
+            <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300" required>
           </div>
         </div>
 
         <div>
           <label for="subject" class="block mb-2 font-medium">Subject</label>
-          <input type="text" name="subject" id="subject" placeholder="Enter your Subject" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300 mb-2">
+          <input type="text" name="subject" id="subject" placeholder="Enter your Subject" class="w-full px-4 py-3 bg-gray-50 rounded border border-gray-300 mb-2" required>
         </div>
 
         <div>
           <label for="message" class="block mb-2 mt-2 font-medium">Message</label>
-          <textarea name="message" id="message" rows="5" placeholder="Enter your Message here..." class="w-full px-4 py-4 bg-gray-50 rounded border border-gray-300"></textarea>
+          <textarea name="message" id="message" rows="5" placeholder="Enter your Message here..." class="w-full px-4 py-4 bg-gray-50 rounded border border-gray-300" required></textarea>
         </div>
 
         <div class="flex justify-center">
