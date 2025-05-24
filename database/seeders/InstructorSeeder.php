@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Instructor;
 use Carbon\Carbon;
 
 class InstructorSeeder extends Seeder
@@ -14,18 +13,22 @@ class InstructorSeeder extends Seeder
      */
     public function run(): void
     {
-        $instructors = [
-            "Thompson Jefferson",
-            "Marcel Sasongko",
-            "Marco Alexander"
-        ];
+        Instructor::create([
+            'name' => 'Thompson Jefferson',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
-        for ($i = 0; $i < 3; $i++) {
-            DB::table('instructors')->insert([
-                "instructor_name" => $instructors[$i],
-                "created_at" => Carbon::now(),
-                "updated_at" => Carbon::now(),                
-            ]);
-        }
+        Instructor::create([
+            'name' => 'Marcel Sasongko',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        Instructor::create([
+            'name' => 'Marco Alexander',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

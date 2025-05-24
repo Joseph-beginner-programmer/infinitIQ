@@ -30,7 +30,7 @@ Route::post('/register' , [RegisterController::class , 'store'])->name('register
 Route::get('/home' , [HomeController::class , 'index'])->name('home');
 
 #Courses
-Route::get('/courses' , [CoursesController::class , 'index'])->name('courses');
+Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
 Route::get('/courses/{id}', [CoursesController::class, 'show'])->name('courses.show');
 
 #About

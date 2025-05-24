@@ -11,25 +11,28 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
-    {
-        // User::factory(10)->create();
+public function run(): void
+{
+    // Buat 2 user: Test User & Jason
+    User::factory()->create([
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+    ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+    User::factory()->create([
+        'name' => 'Jason Wijaya',
+        'email' => 'jason@example.com',
+    ]);
 
-        User::factory()->create([
-            'name' => 'Jason Wijaya',
-            'email' => 'jason@example.com',
-        ]);
+    // Jalankan seeder kategori
+    $this->call(CategoriesSeeder::class);
 
-        $this->call([
-            CategoriesSeeder::class,
-            InstructorSeeder::class,
-            CourseSeeder::class,
-            CoursePartSeeder::class
-        ]);
-    }
+    // Tambahkan ini dulu sebelum CourseSeeder
+    $this->call(InstructorSeeder::class); // <--- 🛠️ HARUS ADA
+
+    // Lalu ini
+    $this->call(CourseSeeder::class);
+}
+
+
 }

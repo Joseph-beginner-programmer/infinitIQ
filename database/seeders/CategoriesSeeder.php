@@ -2,30 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use Illuminate\Support\Str;
+use App\Models\Category;
 
 class CategoriesSeeder extends Seeder
 {
-
-    
     public function run(): void
     {
-        $category_list = [
-            ["web design", "learn-web-dev-with-hands"],
-            ["UI UX", "ui-ux"],
-            ["Software Engineering", "software-engineering"]
-        ];
+        $categories = ['Design', 'Programming', 'Business'];
 
-        for ($i = 0; $i < 3; $i++) {
-            $category = $category_list[$i];
-            DB::table('categories')->insert([
-                "name" => $category[0],
-                "slug" => $category[1],
-                "created_at" => Carbon::now(),
-                "updated_at" => Carbon::now(),                
+        foreach ($categories as $name) {
+            Category::create([
+                'name' => $name,
+                'slug' => Str::slug($name),
             ]);
         }
     }

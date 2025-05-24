@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
-    public function index()
-    {
-        $courses = Course::with(['instructor', 'category', 'parts'])->get();
-             return view('Courses', compact('courses'));
-    }
+public function index()
+{
+    // Ambil semua course beserta parts dan instructor
+    $courses = \App\Models\Course::with(['parts', 'instructor'])->get();
+
+    return view('courses.index', compact('courses'));
+}
+
 
     /**
      * Show the form for creating a new resource.
