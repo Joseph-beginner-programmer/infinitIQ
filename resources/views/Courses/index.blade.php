@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="title-container flex flex-col w-full max-w-screen-lg mx-auto px-5 lg:px-10 py-10">
+<div class="title-container flex flex-col w-full max-w-screen-xl mx-auto px-6 py-10">
     <!-- Title & Description -->
     <div class="lg:flex lg:items-start lg:gap-10 mb-10">
         <div class="title flex-1">
@@ -21,7 +21,20 @@
         <div class="lg:flex justify-between items-start gap-10">
             <div class="flex-1">
                 <h2 class="font-roboto font-bold text-[1.5rem] text-black">{{ $course->title }}</h2>
-                <h3 class="font-roboto font-semibold text-[1.1rem] text-gray-600">4.8 Rating</h3>
+
+                <!-- Rating + Reviews -->
+                <div class="flex items-center text-sm space-x-1 mt-1">
+                    <!-- Star Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .587l3.668 7.568L24 9.748l-6 5.849 1.416 8.264L12 18.896l-7.416 4.965L6 15.597 0 9.748l8.332-1.593z"/>
+                    </svg>
+                    <!-- Rating Value -->
+                    <span class="text-gray-800 font-medium">{{ $course->rating }}</span>
+                    <!-- Reviews Count -->
+                    <span class="text-gray-500">({{ $course->review_count }} reviews)</span>
+                </div>
+
+                <!-- Description -->
                 <p class="text-gray-700 text-[1rem] mt-2">{{ $course->description }}</p>
             </div>
 
@@ -30,10 +43,27 @@
                 <a href="{{ route('courses.show', $course->id) }}" class="font-roboto border border-gray-400 text-black text-[1rem] font-semibold px-6 py-3 rounded-lg">
                     View Course
                 </a>
-            <a href="#"     
-                 class="bg-purple-600 hover:bg-purple-700 transition-all duration-200 text-white text-[1rem] font-semibold px-8 py-3 rounded-lg shadow-md">
-            Enroll Now
-            </a>
+
+                @auth
+                    @if (auth()->user()->courses->contains($course->id))
+                        <span class="bg-green-100 text-green-800 font-semibold text-[1rem] px-6 py-3 rounded-lg">
+                            Already Enrolled
+                        </span>
+                    @else
+                        <form method="POST" action="{{ route('courses.enroll', $course->id) }}">
+                            @csrf
+                            <button type="submit"
+                                class="bg-purple-600 hover:bg-purple-700 transition-all duration-200 text-white text-[1rem] font-semibold px-8 py-3 rounded-lg shadow-md">
+                                Enroll Now
+                            </button>
+                        </form>
+                    @endif
+                @else
+                    <a href="{{ route('login') }}"
+                       class="bg-purple-600 hover:bg-purple-700 transition-all duration-200 text-white text-[1rem] font-semibold px-8 py-3 rounded-lg shadow-md">
+                       Login to Enroll
+                    </a>
+                @endauth
             </div>
         </div>
 

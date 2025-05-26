@@ -14,9 +14,12 @@
   <!-- Badge + Heading -->
   <div class="inline-flex items-center px-6 py-4 border border-purple-200 rounded-xl shadow-md bg-white mb-6 relative">
   <!-- Icon -->
-  <div class="w-10 h-10 flex items-center justify-center bg-yellow-100 rounded-lg mr-4 text-xl text-black">
-    ⚡
-  </div>
+  <div class="w-10 h-10 flex items-center justify-center bg-yellow-100 rounded-lg mr-4 text-black">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M13 2L3 14h9l-1 8L21 10h-9l1-8z" />
+  </svg>
+</div>
+
 
   <!-- Heading -->
   <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
@@ -118,9 +121,10 @@
 
             <!-- Tombol panah -->
             <div class="flex justify-end mt-auto">
-                <button class="w-8 h-8 flex items-center justify-center bg-gray-200 text-black rounded-sm hover:bg-gray-300 transition">
-                    →
-                </button>
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-200 text-[#6A3D8F] rounded-sm hover:bg-gray-300 transition text-2xl">
+    ↗
+</button>
+
             </div>
         </div>
     @endforeach
@@ -133,12 +137,64 @@
 
 
     <!-- Our Courses Section -->
-    <div class="mt-16">
-        <h2 class="text-3xl font-bold mb-4">Our Courses</h2>
-        <p class="text-gray-600 max-w-4xl">
-            Kami menawarkan berbagai kursus yang dapat membantu kamu mengembangkan keterampilan dan pengetahuan di berbagai bidang. Temukan kursus yang sesuai dengan kebutuhanmu dan mulailah perjalanan belajarmu bersama kami.
-        </p>
+<div class="mt-16">
+    <h2 class="text-3xl font-bold mb-4">Our Courses</h2>
+    <p class="text-gray-600 max-w-4xl mb-10">
+        Kami menawarkan berbagai kursus yang dapat membantu kamu mengembangkan keterampilan dan pengetahuan di berbagai bidang. Temukan kursus yang sesuai dengan kebutuhanmu dan mulailah perjalanan belajarmu bersama kami.
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        @foreach ($courses as $course)
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- Gambar -->
+                <img src="{{ asset('images/' . $course->image) }}" alt="{{ $course->title }}" class="w-full h-48 object-cover">
+
+
+                <div class="p-4">
+                    <!-- Info atas -->
+                    <div class="flex justify-between items-center text-sm text-gray-500 mb-2">
+                        <div class="flex items-center gap-3">
+        <!-- Kotak Length -->
+        <div class="px-3 py-1 text-sm border border-gray-300 rounded text-gray-700">
+            {{ $course->length_value }} {{ $course->length_unit }}
+        </div>
+
+        <!-- Kotak Level -->
+        <div class="px-3 py-1 text-sm border border-gray-300 rounded text-gray-700">
+            {{ ucfirst($course->level) }}
+        </div>
     </div>
+                        <div class="ml-auto text-right">By {{ $course->instructor->name }}</div>
+                    </div>
+
+                    <!-- Judul -->
+                    <h3 class="text-lg font-semibold mb-1">{{ $course->title }}</h3>
+
+                    <!-- Rating -->
+                    <div class="flex items-center text-yellow-500 text-sm mb-2">
+                        <svg class="w-4 h-4 fill-current mr-1" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09L5.64 12.045 1 7.91l6.061-.878L10 2l2.939 5.032L19 7.91l-4.64 4.135 1.518 6.045z"/>
+                        </svg>
+                        <span>{{ number_format($course->rating, 1) }}</span>
+                        <span class="text-gray-600 ml-1">({{ $course->review_count }} reviews)</span>
+                    </div>
+
+                    <!-- Deskripsi -->
+                    <p class="text-gray-700 text-sm">
+                        {{ Str::limit($course->description, 120) }}
+                    </p>
+
+                    <!-- Tombol Get it now -->
+<a href="{{ route('courses.show', $course->id) }}" class="block w-full mt-4 bg-[#F1F1F3] text-black text-center py-2 rounded hover:bg-gray-300 transition duration-200">
+    Get it now
+</a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
+
 
 
 <!-- Our Testimonials Section -->
@@ -230,56 +286,70 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6" id="pricingCards">
         @php
             $plans = [
-                'monthly' => [
-                    [
-                        'label' => 'Basic Plan',
-                        'price' => '$19.99',
-                        'features' => [
-                            ['text' => 'Access to basic courses', 'available' => true],
-                            ['text' => 'Community support', 'available' => true],
-                            ['text' => 'Monthly updates', 'available' => true],
-                            ['text' => 'Offline access', 'available' => false],
-                            ['text' => 'Priority support', 'available' => false],
-                        ],
-                    ],
-                    [
-                        'label' => 'Premium Plan',
-                        'price' => '$49.99',
-                        'features' => [
-                            ['text' => 'Access to all courses', 'available' => true],
-                            ['text' => 'Priority support', 'available' => true],
-                            ['text' => 'Exclusive webinars', 'available' => true],
-                            ['text' => 'Offline access', 'available' => true],
-                            ['text' => '1-on-1 mentoring', 'available' => false],
-                        ],
-                    ],
-                ],
-                'yearly' => [
-                    [
-                        'label' => 'Basic Plan',
-                        'price' => '$199.99',
-                        'features' => [
-                            ['text' => 'Access to basic courses', 'available' => true],
-                            ['text' => 'Community support', 'available' => true],
-                            ['text' => 'Yearly updates', 'available' => true],
-                            ['text' => 'Offline access', 'available' => false],
-                            ['text' => 'Priority support', 'available' => false],
-                        ],
-                    ],
-                    [
-                        'label' => 'Premium Plan',
-                        'price' => '$499.99',
-                        'features' => [
-                            ['text' => 'Access to all courses', 'available' => true],
-                            ['text' => 'Priority support', 'available' => true],
-                            ['text' => 'Exclusive webinars', 'available' => true],
-                            ['text' => 'Yearly updates', 'available' => true],
-                            ['text' => 'Offline access', 'available' => true],
-                            ['text' => '1-on-1 mentoring', 'available' => true],
-                        ],
-                    ],
-                ],
-            ];
+    'monthly' => [
+        [
+            'label' => 'Basic Plan',
+            'price' => '$19.99',
+            'features' => [
+                ['text' => 'Access to basic courses', 'available' => true],
+                ['text' => 'Community support', 'available' => true],
+                ['text' => 'Monthly updates', 'available' => true],
+                ['text' => 'Certificate of completion', 'available' => true],
+                ['text' => 'Access on mobile and TV', 'available' => true],
+                ['text' => 'Offline access', 'available' => false],
+                ['text' => 'Priority support', 'available' => false],
+                ['text' => 'Downloadable resources', 'available' => false],
+                
+            ],
+        ],
+        [
+            'label' => 'Premium Plan',
+            'price' => '$49.99',
+            'features' => [
+                ['text' => 'Access to all courses', 'available' => true],
+                ['text' => 'Priority support', 'available' => true],
+                ['text' => 'Exclusive webinars', 'available' => true],
+                ['text' => 'Offline access', 'available' => true],
+                ['text' => 'Downloadable resources', 'available' => true],
+                ['text' => 'Certificate of completion', 'available' => true],
+                ['text' => '1-on-1 mentoring', 'available' => false],
+                ['text' => 'Course projects feedback', 'available' => false],
+            ],
+        ],
+    ],
+    'yearly' => [
+        [
+            'label' => 'Basic Plan',
+            'price' => '$199.99',
+            'features' => [
+                ['text' => 'Access to basic courses', 'available' => true],
+                ['text' => 'Community support', 'available' => true],
+                ['text' => 'Yearly updates', 'available' => true],
+                ['text' => 'Certificate of completion', 'available' => true],
+                ['text' => 'Access on mobile and TV', 'available' => true],
+                ['text' => 'Offline access', 'available' => false],
+                ['text' => 'Priority support', 'available' => false],
+                ['text' => 'Downloadable resources', 'available' => false],
+                
+            ],
+        ],
+        [
+            'label' => 'Premium Plan',
+            'price' => '$499.99',
+            'features' => [
+                ['text' => 'Access to all courses', 'available' => true],
+                ['text' => 'Priority support', 'available' => true],
+                ['text' => 'Exclusive webinars', 'available' => true],
+                ['text' => 'Yearly updates', 'available' => true],
+                ['text' => 'Offline access', 'available' => true],
+                ['text' => '1-on-1 mentoring', 'available' => true],
+                ['text' => 'Course projects feedback', 'available' => true],
+                ['text' => 'Access on mobile and TV', 'available' => true],
+            ],
+        ],
+    ],
+];
+
         @endphp
 
         @foreach (['monthly', 'yearly'] as $period)

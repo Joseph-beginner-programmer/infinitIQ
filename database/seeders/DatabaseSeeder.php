@@ -17,6 +17,7 @@ public function run(): void
     User::factory()->create([
         'name' => 'Test User',
         'email' => 'test@example.com',
+        'password' => bcrypt('admin123'),
     ]);
 
     User::factory()->create([

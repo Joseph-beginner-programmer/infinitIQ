@@ -17,6 +17,7 @@
   body {
     font-family: 'Be Vietnam Pro', sans-serif;
   }
+  [x-cloak] { display: none !important; }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -151,6 +152,26 @@
     </section>
 
   </main>
+
+  <!-- Modal Pop-up -->
+<div 
+  x-data="{ show: @json(session('message_sent') ?? false) }"
+  x-show="show"
+  x-transition
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  x-cloak
+>
+  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md text-center space-y-4">
+    <h3 class="text-xl font-semibold text-purple-700">Your message has been sent successfully!</h3>
+    <button 
+      @click="show = false" 
+      class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+    >
+      Close
+    </button>
+  </div>
+</div>
+
 </body>
 </html>
 @endsection

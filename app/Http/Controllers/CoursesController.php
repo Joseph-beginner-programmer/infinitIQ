@@ -15,6 +15,18 @@ public function index()
     return view('courses.index', compact('courses'));
 }
 
+public function enroll(Request $request, Course $course)
+{
+    $user = $request->user();
+
+    if (!$user->courses->contains($course->id)) {
+        $user->courses()->attach($course->id, ['enrolled_at' => now()]);
+    }
+
+    return back()->with('success', 'You have enrolled in this course!');
+}
+
+
 
     /**
      * Show the form for creating a new resource.

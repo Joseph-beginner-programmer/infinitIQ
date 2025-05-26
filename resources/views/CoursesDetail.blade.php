@@ -38,18 +38,12 @@
     </div>
 
   <div class="max-w-screen-xl mx-auto mt-10 space-y-10">
-    <h2 class="text-xl font-bold mb-4">Instructor</h2>
-    <p class="text-lg font-medium">{{ $course->instructor->instructor_name }}</p>
 
-    <h2 class="text-xl font-bold mt-6 mb-6">Curriculum</h2>
 
-    @php
-      $durasiMap = [
-      ];
-    @endphp
+
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        @foreach ($course->parts as $i => $lesson)
+    @foreach ($course->parts as $i => $lesson)
         <div class="bg-white p-6 rounded-xl shadow-md">
             <!-- Nomor urutan -->
             <div class="text-4xl font-bold text-gray-800 mb-2 text-right">
@@ -61,20 +55,20 @@
                 {{ $lesson->title }}
             </h3>
 
-            <!-- Detail bawah -->
-            <div class="flex items-center justify-between border border-gray-200 rounded-lg px-4 py-3">
-                <div>
-                   <p class="text-sm text-gray-500">Lesson 01</p>
-                </div>
+            <!-- List item dan durasinya -->
+            @foreach ($lesson->items as $item)
+            <div class="flex items-center justify-between border border-gray-200 rounded-lg px-4 py-3 mb-2">
+                <p class="text-sm text-gray-500">{{ $item->title }}</p>
                 <div class="flex items-center text-sm text-gray-700 font-semibold bg-gray-100 px-3 py-1 rounded-md">
                     <svg class="w-4 h-4 mr-1 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                         viewBox="0 0 24 24">
+                        viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    {{ $durasiMap[$lesson->title] ?? '-' }}
+                    {{ $item->duration ?? '-' }}
                 </div>
             </div>
+            @endforeach
         </div>
         @endforeach
     </div>

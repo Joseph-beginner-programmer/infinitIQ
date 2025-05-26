@@ -1,4 +1,4 @@
-<nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="relative flex items-center justify-between px-4 py-3 md:px-6 md:py-4 shadow-sm" aria-label="penguin ui menu">
+<nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="relative flex items-center justify-between px-4 py-3 md:px-6 md:py-4 shadow-sm" aria-label="main menu">
 
   <!-- Left Section: Logo & Desktop Nav -->
   <div class="flex items-center space-x-6">
@@ -25,10 +25,38 @@
     </svg>
   </div>
 
-  <!-- Right: Sign Up, Login, Mobile Burger -->
+  <!-- Right: User or Auth Buttons -->
   <div class="flex items-center space-x-2 md:space-x-4">
-    <a href="{{ route('register') }}" class="text-sm text-gray-700 font-medium hover:text-purple-700">Sign Up</a>
-    <a href="{{ route('login') }}" class="bg-purple-600 text-white rounded px-4 py-1.5 text-sm font-medium hover:opacity-80">Login</a>
+    @guest
+      <a href="{{ route('register') }}" class="text-sm text-gray-700 font-medium hover:text-purple-700">Sign Up</a>
+      <a href="{{ route('login') }}" class="bg-purple-600 text-white rounded px-4 py-1.5 text-sm font-medium hover:opacity-80">Login</a>
+    @endguest
+
+    @auth
+      <!-- Profile dropdown -->
+      <div x-data="{ open: false }" class="relative">
+        <button @click="open = !open" class="focus:outline-none">
+          <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=8A60A2&color=fff&size=128"
+               alt="Profile"
+               class="w-9 h-9 rounded-full object-cover border-2 border-purple-500">
+        </button>
+
+        <div x-show="open" @click.away="open = false"
+             x-transition
+             class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg py-2 z-50">
+          <div class="px-4 py-2 text-sm text-gray-700 font-semibold">
+            Hello, {{ auth()->user()->name }}
+          </div>
+          <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
+    @endauth
 
     <!-- Mobile Burger Button -->
     <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" aria-label="Toggle mobile menu" class="flex md:hidden items-center text-gray-700">
@@ -43,8 +71,6 @@
 
   <!-- Mobile Dropdown Menu -->
   <div x-show="mobileMenuIsOpen" x-transition class="absolute top-0 left-0 w-full bg-white dark:bg-neutral-900 px-6 pt-20 pb-6 shadow-md md:hidden z-20">
-
-    <!-- Close Button inside dropdown (burger style) -->
     <div class="flex justify-end">
       <button x-on:click="mobileMenuIsOpen = false" aria-label="Close mobile menu" class="text-gray-700">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,6 +85,26 @@
       <li><a href="{{ route('about') }}" class="block text-lg font-medium text-gray-600 dark:text-neutral-300">About Us</a></li>
       <li><a href="{{ route('pricing') }}" class="block text-lg font-medium text-gray-600 dark:text-neutral-300">Pricing</a></li>
       <li><a href="{{ route('contact') }}" class="block text-lg font-medium text-gray-600 dark:text-neutral-300">Contact</a></li>
+
+      @guest
+      <li><a href="{{ route('login') }}" class="block text-lg font-medium text-purple-600">Login</a></li>
+      <li><a href="{{ route('register') }}" class="block text-lg font-medium text-purple-600">Sign Up</a></li>
+      @endguest
+
+      @auth
+      <li class="border-t pt-4 mt-4">
+        <div class="text-gray-800 dark:text-white font-semibold text-lg mb-2">
+          Hello, {{ auth()->user()->name }}
+        </div>
+        <a href="{{ route('dashboard') }}" class="block text-base text-gray-600 dark:text-neutral-300 hover:text-purple-600">Dashboard</a>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit" class="w-full text-left text-base text-red-600 hover:text-red-700 mt-2">
+            Logout
+          </button>
+        </form>
+      </li>
+      @endauth
     </ul>
   </div>
 </nav>

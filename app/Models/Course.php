@@ -39,4 +39,8 @@ public function instructor()
     {
         return $this->belongsTo(Category::class);
     }
+    public function users()
+{
+    return $this->belongsToMany(User::class)->withTimestamps()->withPivot('enrolled_at');
+}
 }
