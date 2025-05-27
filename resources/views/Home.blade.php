@@ -148,7 +148,7 @@
         @foreach ($courses as $course)
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <!-- Gambar -->
-                <img src="{{ asset('images/' . $course->image) }}" alt="{{ $course->title }}" class="w-full h-48 object-cover">
+                <img src="{{ asset('storage/' . $course->image_path_1) }}" alt="{{ $course->title }}" class="w-full h-48 object-cover">
 
 
                 <div class="p-4">
