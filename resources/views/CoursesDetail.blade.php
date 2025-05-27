@@ -31,7 +31,7 @@
 
   <div class="mt-6">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/58e815eee69c73e910ba4e5ff189bc2c07a6e5e4?placeholderIfAbsent=true&apiKey=63b94c7aed0a42e18e9f9d30499e2537"
+          src="{{ asset('storage/' . $course->image_path_1) }}"
           alt="Course visual"
           class="rounded-lg w-full object-cover"
         />

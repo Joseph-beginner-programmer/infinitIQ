@@ -70,13 +70,13 @@
         <!-- Images -->
         <div class="image-container flex gap-5 mt-8">
             <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
-                <img src="{{ asset('storage/web1.jpg') }}" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('storage/' . $course->image_path_1) }}" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
-                <img src="{{ asset('storage/web2.jpeg') }}" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('storage/' . $course->image_path_2) }}" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
-                <img src="{{ asset('storage/web3.jpg') }}" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('storage/' . $course->image_path_3) }}" class="w-full h-full object-cover rounded-lg">
             </div>
         </div>
 

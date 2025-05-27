@@ -20,9 +20,12 @@ return new class extends Migration {
             $table->integer('length_value');
             $table->enum('length_unit', ['day', 'week', 'month']);
 
+
             // Level dan tambahan opsional
             $table->enum('level', ['beginner', 'intermediate', 'advanced'])->default('beginner');
-            $table->string('image')->nullable(); // optional thumbnail
+            $table->string('image_path_1');
+            $table->string('image_path_2');
+            $table->string('image_path_3');
             $table->float('rating')->default(0);
             $table->integer('review_count')->default(0);
 
