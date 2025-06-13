@@ -4,7 +4,7 @@
 <body class="bg-gray-50 text-gray-800">
 
   <!-- ✅ Container Utama -->
-  <main class="max-w-8xl mx-auto px-4 sm:px-8 lg:px-24 py-12">
+  <main class="max-w-8xl mx-auto px-4 sm:px-8 lg:px-24 py-12 mt-24" id="company">
 
     <!-- 🔹 Judul & Deskripsi -->
     <section class="grid md:grid-cols-2 gap-10 mb-12">
@@ -20,7 +20,7 @@
 
     <div>
          <!-- Judul -->
-         <h1 class="text-3xl font-bold mb-2">Achivements</h1>
+         <h1 class="text-3xl font-bold mb-2" id="achievements">Achivements</h1>
 
         <!-- Deskripsi -->
         <p class="text-gray-600 mb-8">Our commitment to excellence has led us to achieve significant milestones along our 
@@ -99,7 +99,7 @@
 
     <div class="pt-20">
          <!-- Judul -->
-         <h1 class="text-3xl font-bold mb-2">Our Goals</h1>
+         <h1 class="text-3xl font-bold mb-2" id="goals">Our Goals</h1>
 
         <!-- Deskripsi -->
         <p class="text-gray-600 mb-8">At SkillBridge, our goal is to empower individuals from all backgrounds to thrive in 

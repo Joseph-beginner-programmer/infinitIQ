@@ -9,7 +9,7 @@
         <form action="{{ route('login.submit') }}" method="POST" class="space-y-5">
             @csrf
 
-       
+            
 
             <!-- Email -->
             <div>
@@ -35,9 +35,10 @@
                     I agree with <a href="#" class="text-purple-600 underline">Terms of Use</a> and <a href="#" class="text-purple-600 underline">Privacy Policy</a>
                 </label>
             </div>
+            
 
             <!-- Sign Up Button -->
-            <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition">Login</button>
+           <button type="submit" id="loginBtn" class="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition opacity-50 cursor-not-allowed" disabled>Login</button>
         </form>
 
         <!-- OR Divider -->
@@ -82,5 +83,20 @@
             });
         }
     });
+    const termsCheckbox = document.getElementById('terms');
+const loginBtn = document.getElementById('loginBtn');
+
+if (termsCheckbox && loginBtn) {
+    termsCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            loginBtn.disabled = false;
+            loginBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        } else {
+            loginBtn.disabled = true;
+            loginBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+    });
+}
+
 </script>
 @endsection

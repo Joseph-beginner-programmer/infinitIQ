@@ -30,5 +30,20 @@ class InstructorSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        Instructor::create([
+            'name' => 'Joseph Evan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        Instructor::create([
+            'name' => 'Hans Anthony',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        Instructor::create([
+            'name' => 'Jason Keren',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

@@ -41,7 +41,9 @@
             </div>
 
             <!-- Sign Up Button -->
-            <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition">Sign Up</button>
+         <button type="submit" id="SubmitBtn" disabled class="w-full bg-purple-600 text-white py-2 rounded-md opacity-50 cursor-not-allowed hover:bg-purple-700 transition">
+    Sign Up
+</button>
         </form>
 
         <!-- OR Divider -->
@@ -85,5 +87,22 @@
             });
         }
     });
+
+        const termsCheckbox = document.getElementById('terms');
+const loginBtn = document.getElementById('SubmitBtn');
+
+if (termsCheckbox && loginBtn) {
+    termsCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            loginBtn.disabled = false;
+            loginBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        } else {
+            loginBtn.disabled = true;
+            loginBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+    });
+}
+
+
 </script>
 @endsection

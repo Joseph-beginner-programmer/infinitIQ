@@ -10,7 +10,7 @@
 
 
     <!-- Hero Section -->
-<div class="text-center mb-16">
+<div class="text-center mt-24">
   <!-- Badge + Heading -->
   <div class="inline-flex items-center px-6 py-4 border border-purple-200 rounded-xl shadow-md bg-white mb-6 relative">
   <!-- Icon -->
@@ -33,24 +33,17 @@
     with Online Design and Development Courses.
   </p>
 
-  <!-- Search Bar -->
-  <div class="flex justify-center mb-6">
-    <div class="flex items-center w-full max-w-md bg-[#E8B9FF] rounded-full px-4 py-2">
-      <svg class="w-5 h-5 text-gray-700 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
-      </svg>
-      <input type="text" placeholder="Search Course" class="bg-transparent w-full focus:outline-none text-gray-800 placeholder-gray-600">
-      <svg class="w-5 h-5 text-gray-700 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </div>
-  </div>
+
+
+
+
+
 
   <!-- Action Buttons -->
   <div class="flex justify-center gap-4">
-    <button class="bg-[#8A60A2] text-white font-semibold px-6 py-2 rounded-lg shadow hover:bg-purple-700 transition">
-      Explore Courses
-    </button>
+<a href="#our-courses" class="bg-[#8A60A2] text-white font-semibold px-6 py-2 rounded-lg shadow hover:bg-purple-700 transition">
+  Explore Courses
+</a>
     <a href="#pricing" class="bg-white text-gray-800 font-semibold px-6 py-2 rounded-lg shadow border border-gray-300 hover:bg-white transition">
   View Pricing
 </a>
@@ -62,7 +55,7 @@
 
 
     <!-- Judul -->
-    <h1 class="text-3xl font-bold mb-2">Benefits</h1>
+    <h1 class="text-3xl font-bold mb-2" id="benefits">Benefits</h1>
 
 
     <!-- Deskripsi -->
@@ -99,14 +92,14 @@
     ];
 @endphp
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" >
     @foreach ($benefits as $i => $benefit)
-        <div class="bg-white shadow-md rounded-xl p-6 flex flex-col aspect-square relative">
+       <div class="bg-white shadow-md p-6 flex flex-col min-h-[280px] relative">
             <!-- Angka kanan atas -->
             <div class="absolute top-4 right-4">
-                <h1 class="text-6xl font-bold text-black">
+               <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
                     {{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}
-                </h1>
+                </h2>
             </div>
 
             <!-- Judul dan Deskripsi -->
@@ -119,13 +112,6 @@
                 </p>
             </div>
 
-            <!-- Tombol panah -->
-            <div class="flex justify-end mt-auto">
-                <button class="w-8 h-8 flex items-center justify-center bg-gray-200 text-[#6A3D8F] rounded-sm hover:bg-gray-300 transition text-2xl">
-    ↗
-</button>
-
-            </div>
         </div>
     @endforeach
 </div>
@@ -137,7 +123,7 @@
 
 
     <!-- Our Courses Section -->
-<div class="mt-16">
+<div class="mt-16" id="our-courses">
     <h2 class="text-3xl font-bold mb-4">Our Courses</h2>
     <p class="text-gray-600 max-w-4xl mb-10">
         Kami menawarkan berbagai kursus yang dapat membantu kamu mengembangkan keterampilan dan pengetahuan di berbagai bidang. Temukan kursus yang sesuai dengan kebutuhanmu dan mulailah perjalanan belajarmu bersama kami.
@@ -148,8 +134,8 @@
         @foreach ($courses as $course)
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <!-- Gambar -->
-                <img src="{{ asset('images/' . $course->image) }}" alt="{{ $course->title }}" class="w-full h-48 object-cover">
-
+                <img src="{{ asset($course->image_path_1) }}" alt="{{ $course->title }}" class="w-full h-48 object-cover">
+                
 
                 <div class="p-4">
                     <!-- Info atas -->
@@ -199,7 +185,7 @@
 
 <!-- Our Testimonials Section -->
 <div class="mt-16">
-    <h1 class="text-2xl font-bold mb-4">Our Testimonials</h1>
+    <h1 class="text-2xl font-bold mb-4" id="testimonials">Our Testimonials</h1>
     <p class="text-gray-600 mb-8">
         Berikut adalah beberapa testimoni dari peserta yang telah mengikuti kursus kami. Mereka berbagi pengalaman dan manfaat yang mereka dapatkan.
     </p>
@@ -233,7 +219,7 @@
         ];
     @endphp
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6" >
         @foreach ($testimonials as $testimonial)
             <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between">
                 <p class="text-gray-700 mb-4">
@@ -394,9 +380,9 @@
                         </div>
 
                         <!-- Button -->
-                        <button class="w-full py-2 bg-[#8A60A2] text-white rounded-lg hover:bg-purple-700 transition">
-                            Get Started
-                        </button>
+            <a href="{{ route('login') }}" class="block text-center w-full py-2 bg-[#8A60A2] text-white rounded-lg hover:bg-purple-700 transition">
+                    Get Started
+                        </a>
                     </div>
                 </div>
             @endforeach
@@ -404,7 +390,7 @@
     </div>
 </div>
 
-<div class="bg-white rounded-xl border border-gray-300 p-8 max-w-* mx-auto flex flex-col md:flex-row gap-8 mt-12">
+<div class="bg-white rounded-xl border border-gray-300 p-8 max-w-* mx-auto flex flex-col md:flex-row gap-8 mt-12" id="faq">
   <!-- Left side: Title & Description -->
   <div class="md:w-1/3 flex flex-col justify-start">
     <h1 class="text-3xl font-bold mb-4 text-gray-900">Frequently Asked <br> Questions</h1>

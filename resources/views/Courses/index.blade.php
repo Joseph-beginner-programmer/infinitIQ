@@ -1,18 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="title-container flex flex-col w-full max-w-screen-xl mx-auto px-6 py-10">
+<div class="title-container flex flex-col w-full max-w-screen-xl mx-auto px-6 py-10 mt-24">
     <!-- Title & Description -->
     <div class="lg:flex lg:items-start lg:gap-10 mb-10">
         <div class="title flex-1">
-            <h1 class="font-roboto font-bold text-[2rem] md:text-[2.2rem] lg:text-[2.5rem] leading-tight">
-                Online Courses on Design and Development
+        <h1 class="font-roboto font-bold text-[2rem] md:text-[2.2rem] lg:text-[2.5rem] leading-tight">
+    {{ request('search') ? 'Search results for: ' . request('search') : 'Online Courses on Design and Development' }}
             </h1>
         </div>
         <div class="description font-roboto text-base lg:text-[1.1rem] flex-1 mt-4 lg:mt-0 text-gray-700">
             <p>Welcome to our online course page, where you can enhance your skills in design and development. Choose from our carefully curated selection of 10 courses designed to provide you with comprehensive knowledge and practical experience. Explore the courses below and find the perfect fit for your learning journey.</p>
         </div>
     </div>
+    <form method="GET" action="{{ route('courses') }}" class="flex flex-wrap gap-4 mb-8">
+    <!-- Order -->
+    <select name="order" class="px-4 py-2 border rounded bg-gray-100 text-gray-700">
+        <option value="asc" {{ request('order') == 'asc' ? 'selected' : '' }}>Ascending</option>
+        <option value="desc" {{ request('order') == 'desc' ? 'selected' : '' }}>Descending</option>
+    </select>
+
+    <!-- Sort By -->
+    <select name="sort_by" class="px-4 py-2 border rounded bg-gray-100 text-gray-700">
+        <option value="created_at" {{ request('sort_by') == 'created_at' ? 'selected' : '' }}>Date</option>
+        <option value="length_value" {{ request('sort_by') == 'length_value' ? 'selected' : '' }}>Length</option>
+        <option value="rating" {{ request('sort_by') == 'rating' ? 'selected' : '' }}>Rating</option>
+        <option value="review_count" {{ request('sort_by') == 'review_count' ? 'selected' : '' }}>Reviews</option>
+    </select>
+
+    <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+        Apply
+    </button>
+</form>
+
+
 
     <!-- Loop Courses -->
     @foreach ($courses as $course)
@@ -68,17 +89,18 @@
         </div>
 
         <!-- Images -->
-        <div class="image-container flex gap-5 mt-8">
-            <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
-                <img src="{{ asset('storage/' . $course->image_path_1) }}" class="w-full h-full object-cover rounded-lg">
-            </div>
-            <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
-                <img src="{{ asset('storage/' . $course->image_path_2) }}" class="w-full h-full object-cover rounded-lg">
-            </div>
-            <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
-                <img src="{{ asset('storage/' . $course->image_path_3) }}" class="w-full h-full object-cover rounded-lg">
-            </div>
-        </div>
+<div class="image-container flex gap-5 mt-8">
+    <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
+        <img src="{{ asset($course->image_path_1) }}" class="w-full h-full object-cover rounded-lg">
+    </div>
+    <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
+        <img src="{{ asset($course->image_path_2) }}" class="w-full h-full object-cover rounded-lg">
+    </div>
+    <div class="h-[6rem] w-[6rem] lg:h-[12rem] lg:w-[20rem]">
+        <img src="{{ asset($course->image_path_3) }}" class="w-full h-full object-cover rounded-lg">
+    </div>
+</div>
+
 
         <!-- Duration & Level -->
         <div class="flex gap-3 mt-6">

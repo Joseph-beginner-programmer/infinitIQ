@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <main class="max-w-8xl mx-auto px-4 sm:px-8 lg:px-24 py-12">
+  <main class="max-w-8xl mx-auto px-4 sm:px-8 lg:px-24 py-12 mt-24">
 
     <!-- 🔹 Judul & Deskripsi -->
     <section class="grid md:grid-cols-2 gap-10 mb-12">

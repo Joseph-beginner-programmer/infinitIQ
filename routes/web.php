@@ -39,10 +39,15 @@ Route::post('/register' , [RegisterController::class , 'store'])->name('register
 #Home
 Route::redirect('/' , '/home');
 Route::get('/home' , [HomeController::class , 'index'])->name('home');
-
+ 
 #Courses
 Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
+
+
 Route::get('/courses/{id}', [CoursesController::class, 'show'])->name('courses.show');
+
+
+
 Route::middleware('auth')->post('/courses/{course}/enroll', [CoursesController::class, 'enroll'])->name('courses.enroll');
 
 
