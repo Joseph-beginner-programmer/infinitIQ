@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +39,7 @@ Route::post('/register' , [RegisterController::class , 'store'])->name('register
 #Home
 Route::redirect('/' , '/home');
 Route::get('/home' , [HomeController::class , 'index'])->name('home');
- 
+
 #Courses
 Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
 
@@ -65,13 +64,3 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 #Dashboard
 Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-=======
-use App\Http\Controllers\CourseController;
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('courses', CourseController::class);
->>>>>>> 5a19f689af9fdf875c72d43b77fc209b469bea40
