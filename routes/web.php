@@ -1,5 +1,8 @@
 <?php
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -28,6 +31,19 @@ Route::post('/register' , [RegisterController::class , 'store'])->name('register
 
 #Home
 Route::get('/home' , [HomeController::class , 'index'])->name('home');
+<<<<<<< Updated upstream
+=======
+
+#Courses
+Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
+
+
+Route::get('/courses/{id}', [CoursesController::class, 'show'])->name('courses.show');
+
+
+
+Route::middleware('auth')->post('/courses/{course}/enroll', [CoursesController::class, 'enroll'])->name('courses.enroll');
+>>>>>>> Stashed changes
 
 #Coursesr
 Route::get('/courses' , [CoursesController::class , 'index'])->name('courses');
@@ -42,3 +58,9 @@ Route::get('/pricing' , [PricingController::class , 'index'])->name('pricing');
 Route::get('/contact' , [ContactController::class , 'index'])->name('contact'); 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+<<<<<<< Updated upstream
+=======
+
+#Dashboard
+Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+>>>>>>> Stashed changes
