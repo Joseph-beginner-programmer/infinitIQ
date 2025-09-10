@@ -1,4 +1,5 @@
 import './bootstrap';
+<<<<<<< HEAD
 
     console.log("Test script injected");
 
@@ -21,3 +22,5 @@ import './bootstrap';
             console.log("Element not found 😢");
         }
     });
+=======
+>>>>>>> 5a19f689af9fdf875c72d43b77fc209b469bea40
