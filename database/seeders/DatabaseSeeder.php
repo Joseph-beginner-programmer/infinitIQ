@@ -23,6 +23,7 @@ public function run(): void
     User::factory()->create([
         'name' => 'Jason Wijaya',
         'email' => 'jason@example.com',
+        'password' => bcrypt('admin123'),
     ]);
 
     // Jalankan seeder kategori
